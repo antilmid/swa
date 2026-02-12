@@ -5,8 +5,8 @@ const instance = axios.create({
   timeout: 6e4, // 60s
 });
 
-export const get = async <T = any>(url: string, config?: AxiosRequestConfig): Promise<T> => {
-  const response: AxiosResponse<T> = await instance.get(url, config);
+export const get = async <T = any>(url: string, query?: any, config?: AxiosRequestConfig): Promise<T> => {
+  const response: AxiosResponse<T> = await instance.get(url, { ...config, params: query });
   return response.data;
 }
 
